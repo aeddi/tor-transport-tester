@@ -15,8 +15,11 @@ struct ContentView: View {
         VStack {
             Button(action: {
                 self.result = "Loading..."
+                let startTime = CFAbsoluteTimeGetCurrent()
                 let testResult = TorDo()
-                self.result = testResult
+                let timeElapsed = Double(round(1000*(CFAbsoluteTimeGetCurrent() - startTime))/1000)
+                self.result = "Time elapsed: \(timeElapsed) s.\nResult: \(testResult)"
+
             }) {
                 HStack {
                     Image(systemName: "speedometer")
